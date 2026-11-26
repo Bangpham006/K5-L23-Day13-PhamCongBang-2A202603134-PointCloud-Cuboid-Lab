@@ -2,31 +2,31 @@
 
 ## 1. Kết luận trước
 
-Mã số sinh viên 2A202603134, mã nhiệm vụ D13-2A202603134, gồm 10 khung hình: s01f04, s01f55, s02f00, s02f21, s03f07, s03f47, s04f19, s04f47, s05f12, s05f42. Máy chạy Windows, mở CVAT trên trình duyệt Chrome, phiên bản CVAT 2.74.1, ngồi cạnh bạn có mã số [điền MSSV bạn đổi kiểm].
+Mã số sinh viên 2A202603134, mã nhiệm vụ D13-2A202603134, gồm 10 khung hình: s01f04, s01f55, s02f00, s02f21, s03f07, s03f47, s04f19, s04f47, s05f12, s05f42. Máy chạy Windows, mở CVAT trên trình duyệt Chrome bản 2.74.1, ngồi đổi kiểm cùng bạn mã số 2A202603054.
 
-Tổng cộng đã vẽ 97 khối hộp 3D dạng hình đơn trên 10 khung hình (s01f04 có 12, s01f55 có 12, s02f00 có 7, s02f21 có 9, s03f07 có 10, s03f47 có 7, s04f19 có 16, s04f47 có 8, s05f12 có 10, s05f42 có 6). Khung hình ít hộp nhất là s05f42 với 6 hộp do có xe ở xa phía sau bị che khuất và ít điểm nên không vẽ. Phiếu tự kiểm báo 0 trên 97 hộp bị cảnh báo. Phần tự tin nhất là xác định đúng loại đối tượng, hướng đầu xe và độ cao đáy chạm đường với các vật trong khoảng 25 m; phần còn phân vân là cạnh khuất của các xe ở xa trên 30 m.
+Bài này mình gán nhãn tổng cộng 97 hộp trên 10 khung hình. Khung hình ít nhất là s05f42 với 6 hộp vì xe phía sau ở xa bị che và ít điểm nên bỏ qua. Chạy tự kiểm không còn cảnh báo nào với 0 trên 97 hộp bị cờ. Các vật trong khoảng 25 m mình tự tin về loại nhãn, hướng đầu xe và đáy chạm đường; các xe xa trên 30 m bị khuất nửa trước thì vẫn hơi phân vân về chiều dài.
 
-Khi dùng CVAT, giữ chuột trái để xoay khung nhìn 3D lên thẳng trên xuống, giữ chuột phải để dịch chuyển vùng nhìn, cuộn con lăn để phóng to thu nhỏ và nháy đúp chỗ trống để về góc nhìn mặc định. Khi vẽ, chọn công cụ vẽ khối hộp, chọn đúng loại nhãn ở chế độ hình đơn rồi nháy đúp vào cụm điểm của vật, sau đó chỉnh tâm, dài, rộng, góc quay ở khung nhìn trên và chỉnh độ cao đáy chạm đường ở khung nhìn cạnh và trước. Cuối cùng bật mũi tên hướng để căn vạch đỏ về đầu xe, lưu lại và chạy lệnh đồng bộ để đối chiếu lại toàn bộ hộp lên 7 góc máy ảnh.
+Trên CVAT, giữ chuột trái để xoay góc nhìn 3D lên thẳng trên xuống, chuột phải để dời vùng nhìn, cuộn chuột để phóng to thu nhỏ và nháy đúp chỗ trống để về góc ban đầu. Khi vẽ thì chọn công cụ hộp đơn, chọn nhãn rồi nháy đúp vào cụm điểm, chỉnh vị trí và góc quay ở khung trên, hạ đáy chạm mặt đường ở khung cạnh và trước, bật mũi tên hướng căn vạch đỏ về đầu xe rồi lưu và đồng bộ đối chiếu lên ảnh camera.
 
 ## 2. Đọc frame
 
 | Frame | Phía trước xe ở cạnh nào của ảnh nhìn từ trên xuống; +x, +y chỉ về đâu | Mặt đường | Vật xa nhất đọc được | Loại vật thấy | Vật phía sau và hai bên | Cụm chưa đọc được |
 |---|---|---|---|---|---|---|
-| s01f04 | Phía trước nằm ở cạnh trên theo góc cam01; trục +x hướng sang trái, trục +y hướng xuống dưới ra sau | Khá phẳng, cao độ mặt đường quanh âm 1,67 m (phía trước khoảng âm 1,79 m, phía sau khoảng âm 1,62 m), vỉa hè hai bên nhô cao nhẹ | Khoảng 45 đến 50 m dọc theo đường chính | Car, Truck ở làn ngược chiều bên trái, Bus ở ngã tư phía xa, Cyclist ở vạch qua đường phía sau | Phía sau trái khoảng 6,7 m có xe con xanh; phía sau khoảng 16 m và 23 m có xe con đi tới; bên trái có xe tải thùng trắng | Vài cụm điểm rời rạc ven hàng cây bên phải và ngoài ngã tư phía sau phải trên 35 m |
-| s01f55 | Phía trước nằm ở cạnh trên theo góc cam01; trục +x hướng sang trái, trục +y hướng xuống dưới ra sau | Phẳng, dốc nhẹ lên về phía trước, cao độ quanh âm 1,76 m (phía trước khoảng âm 1,61 m, phía sau khoảng âm 1,77 m), lề phải cao hơn lòng đường | Khoảng 40 đến 45 m ở các xe xếp hàng phía trước | Car xếp hàng trước sau, Bus hoặc xe van cao ở xa phía trước, Pedestrian trên vỉa hè phải | Phía sau khoảng 7 m có hai xe con trắng; bên phải trên vỉa hè có hàng xe đạp dựng không người | Cụm điểm lẫn giữa tán cây, trụ đèn và hàng xe đạp dựng trên vỉa hè phải |
+| s01f04 | Phía trước ở cạnh trên khớp góc cam01; +x hướng sang trái, +y hướng xuống dưới ra sau | Khá phẳng, cao độ quanh âm 1,67 m, vỉa hè hai bên nhô cao hơn nhẹ | Khoảng 45 đến 50 m dọc đường chính | Car, Truck ở làn ngược chiều bên trái, Bus ở ngã tư phía xa, Cyclist ngay vạch qua đường phía sau | Phía sau trái khoảng 6,7 m có xe con xanh; phía sau khoảng 16 m và 23 m có xe con đi tới; bên trái có xe tải thùng trắng | Vài cụm điểm rời ven hàng cây bên phải và ngoài ngã tư phía sau phải trên 35 m |
+| s01f55 | Phía trước ở cạnh trên khớp góc cam01; +x hướng sang trái, +y hướng xuống dưới ra sau | Phẳng, hơi dốc nhẹ lên phía trước, cao độ quanh âm 1,76 m, lề phải cao hơn lòng đường | Khoảng 40 đến 45 m ở hàng xe phía trước | Car nối đuôi nhau phía trước, Bus hoặc xe van cao ở xa phía trước, Pedestrian trên vỉa hè phải | Phía sau khoảng 7 m có hai xe con trắng; bên phải trên vỉa hè có dãy xe đạp dựng không có người | Mấy cụm điểm lẫn giữa tán cây, cột đèn và hàng xe đạp dựng trên vỉa hè phải |
 
-Ba điều chỉ máy ảnh cho biết từ hai khung hình trên gồm màu sắc và kiểu dáng xe (phân biệt xe tải thùng với xe con), phân biệt đầu đuôi xe và nhận biết xe đạp dựng không có người trên vỉa hè phải ở s01f55 để không gán nhãn nhầm, cùng vạch kẻ đường, đèn tín hiệu và biển báo. Ba điều chỉ LiDAR cho biết gồm tọa độ không gian và khoảng cách chính xác bằng mét tới từng vật, kích thước thực dài rộng cao theo mét cùng độ cao mặt đường, và toàn cảnh 360 độ kể cả vùng góc khuất giữa các máy ảnh.
+Xem ảnh camera giúp biết màu xe, kiểu dáng phân biệt xe tải thùng với xe con, nhận ra đầu hay đuôi xe, thấy dãy xe đạp dựng không người trên vỉa hè phải ở s01f55 để không gán nhầm, cùng vạch kẻ đường và biển báo. LiDAR cho biết tọa độ và khoảng cách bằng mét, kích thước dài rộng cao thật, độ cao mặt đường và góc nhìn 360 độ cả chỗ camera bị khuất.
 
 | Frame | Phía trước ở cạnh nào của ảnh nhìn từ trên xuống | Điều lạ |
 |---|---|---|
-| s02f00 | Cạnh trên theo hướng cam01 | Xe buýt đỏ sát bên trái tạo vùng bóng che lớn phía sau trái nó |
+| s02f00 | Cạnh trên theo hướng cam01 | Xe buýt đỏ sát bên trái chắn tạo vùng trống phía sau trái nó |
 | s02f21 | Cạnh trên theo hướng cam01 | Có người đi xe tay ga sát lề phải và hàng rào hai bên tạo vệt điểm thẳng dài |
 | s03f07 | Cạnh trên theo hướng cam01 | Tường quây công trình sát hai bên che khuất ngoài lề, có một điểm lẻ rơi sâu dưới đất ở cao độ âm 4,6 m |
 | s03f47 | Cạnh trên theo hướng cam01 | Có xe buýt đi ngang giao lộ ở xa phía trước và người đi xe đạp sau rào bên phải |
-| s04f19 | Cạnh trên theo hướng cam01 | Xe đông cả phía trước lẫn phía sau, có xe máy đi ngay chính giữa phía sau |
-| s04f47 | Cạnh trên theo hướng cam01 | Hai xe phía trước bên phải đi gần nhau nên phần hông xe ngoài bị che bớt |
+| s04f19 | Cạnh trên theo hướng cam01 | Xe đông cả trước lẫn sau, có xe máy chạy ngay chính giữa phía sau |
+| s04f47 | Cạnh trên theo hướng cam01 | Hai xe phía trước bên phải đi sát nhau nên phần hông xe ngoài bị che bớt |
 | s05f12 | Cạnh trên theo hướng cam01 | Ngã tư rộng có nhiều hướng xe cắt ngang và rẽ qua giao lộ |
-| s05f42 | Cạnh trên theo hướng cam01 | Xuất hiện nhiều điểm nằm thấp hơn hẳn mặt đường về phía bên trái |
+| s05f42 | Cạnh trên theo hướng cam01 | Có nhiều điểm nằm thấp hơn hẳn mặt đường về phía bên trái |
 
 ## 3. Ba cuboid có hướng dẫn
 
@@ -36,18 +36,18 @@ Ba điều chỉ máy ảnh cho biết từ hai khung hình trên gồm màu s�
 | Xe tải | s01f04, idx 4 | Truck | Có, góc 89,5 độ hướng về đầu xe | Có, độ hở 0,07 m | Có, đã đối chiếu cam05 và cam06 | Dài 5,75 m, rộng 2,25 m, cao 2,97 m |
 | Xe hai bánh | s01f04, idx 7 | Cyclist | Có, góc 270,0 độ theo mũi xe | Có, độ hở 0,01 m | Có, đã đối chiếu cam08 và cam09 | Dài 1,81 m, rộng 0,86 m, cao 1,67 m |
 
-Qua đối chiếu quy chuẩn, cần luôn bật mũi tên hướng để kiểm tra chiều đầu xe, mở rộng chiều rộng hộp đủ bao hai gương chiếu hậu và chỉnh đáy chạm đúng cao độ mặt đường tại vị trí đặt vật.
+Sau khi đối chiếu lại với tài liệu hướng dẫn, mình luôn bật mũi tên hướng để tránh lộn đầu đuôi, kéo rộng hộp để ôm cả hai gương chiếu hậu và kiểm hai khung cạnh, trước để đáy chạm đúng mặt đường.
 
-Các vật bỏ qua vì không đủ cơ sở gồm các cụm điểm quá thưa ở mép cây và ngoài ngã tư trên 35 m ở s01f04 do không rõ hình dạng, hàng xe đạp dựng không người trên vỉa hè phải ở s01f55 theo quy tắc không gán xe không người, và xe buýt ở xa phía sau trên 32 m ở s05f42 bị xe phía trước và tán cây che gần hết chỉ còn ít điểm rời.
+Những chỗ bỏ qua không vẽ vì thiếu cơ sở gồm mấy cụm điểm rời ven tán cây và ngoài ngã tư trên 35 m ở s01f04, hàng xe đạp dựng không người trên vỉa hè phải ở s01f55, và xe buýt phía sau trên 32 m ở s05f42 bị xe trước với cây che gần hết chỉ còn ít điểm rời.
 
 ## 4. Bốn hiện tượng chất lượng
 
 | Hiện tượng | Frame, ảnh, nguồn | Nguyên nhân giả thuyết | Thấy gì trên point cloud | Hệ quả khi gán theo quy chuẩn |
 |---|---|---|---|---|
-| 1. Bóng che | s02f00, t4-1-bong-che.png, frame bản thân | Giả thuyết do thân xe buýt đỏ cao và dài ở khoảng 9,14 m chắn tia quét LiDAR | Phía sau trái xe buýt tạo thành một vùng trống hoàn toàn không có điểm trong khi hai bên vẫn dày điểm | Vùng trống là chỗ chưa quan sát được; nếu có vật bị che một phần phía sau cần bật thuộc tính bị che khuất và bao cả phần suy luận được |
+| 1. Bóng che | s02f00, t4-1-bong-che.jpg, frame bản thân | Giả thuyết do thân xe buýt đỏ cao và dài ở khoảng 9,14 m chắn tia quét LiDAR | Phía sau trái xe buýt tạo vùng trống không có điểm trong khi hai bên vẫn dày điểm | Vùng trống là chỗ chưa quan sát được; nếu có vật bị che một phần phía sau cần bật thuộc tính bị che khuất và bao cả phần suy luận được |
 | 2. Thưa ở xa | s02f00, t4-2-thua-o-xa.png, frame bản thân | Giả thuyết do các tia quét tách xa nhau dần theo khoảng cách trên 40 m | Xe ở 41,10 m chỉ còn 43 điểm và xe ở 45,23 m chỉ còn 25 điểm ở phần đuôi | Chỉ vẽ khi thấy khoảng 15 đến 20 phần trăm thể tích và nhìn rõ qua ảnh máy ảnh, còn thưa quá không đủ cơ sở thì bỏ qua |
-| 3. Phản xạ thấp | s03f07, t4-3-phan-xa-thap.png, frame bản thân | Giả thuyết do sơn xe tối màu và kính sẫm hấp thụ hoặc phản xạ lệch tia laser | Xe đen ở 7,93 m chỉ thu được 1466 điểm, ít hơn xe đỏ 7,03 m ở s03f47 có 2053 điểm hay xe trắng 7,26 m ở s01f55 có 1813 điểm | Không thu hẹp hay nới lỏng hộp theo phần thiếu điểm mà dựa thêm ảnh máy ảnh và mép thân dưới để giữ đúng kích thước thật |
-| 4. Điểm lạ | s05f42, t4-4-diem-la.png, frame bản thân | Giả thuyết do tia laser phản xạ nhiều lần qua kính, thân xe bóng hoặc sai số cảm biến | Có 1881 điểm có cao độ thấp hơn âm 2,6 m, trung vị âm 2,94 m ở phía bên trái (tương tự s03f07 có điểm đơn lẻ ở âm 4,6 m) | Không gán thành vật thể cho các điểm rơi dưới mặt đường hay lơ lửng |
+| 3. Phản xạ thấp | s03f07, t4-3-phan-xa-thap.jpg, frame bản thân | Giả thuyết do sơn xe tối màu và kính sẫm hấp thụ hoặc phản xạ lệch tia laser | Xe đen ở 7,93 m chỉ thu được 1466 điểm, ít hơn xe đỏ 7,03 m ở s03f47 có 2053 điểm hay xe trắng 7,26 m ở s01f55 có 1813 điểm | Không thu hẹp hay nới lỏng hộp theo phần thiếu điểm mà dựa thêm ảnh máy ảnh và mép thân dưới để giữ đúng kích thước thật |
+| 4. Điểm lạ | s05f42, t4-4-diem-la.jpg, frame bản thân | Giả thuyết do tia laser phản xạ nhiều lần qua kính, thân xe bóng hoặc sai số cảm biến | Có 1881 điểm có cao độ thấp hơn âm 2,6 m, trung vị âm 2,94 m ở phía bên trái, ngoài ra ở s03f07 cũng có điểm lẻ ở âm 4,6 m | Không gán thành vật thể cho các điểm rơi dưới mặt đường hay lơ lửng |
 
 ## 5. Số từ cuboid của tôi
 
@@ -57,11 +57,11 @@ Các vật bỏ qua vì không đủ cơ sở gồm các cụm điểm quá thư
 | s02f00, idx 1, Bus | -0.142 | 3.463 | -1.873 | 9.14 | 9.14 | 270.0 | Chạm đường |
 | s01f55, idx 9, Pedestrian | -0.537 | 1.587 | -1.331 | 21.48 | 21.49 | 270.0 | Chạm mặt vỉa hè nâng cao |
 
-Hộp gần nhất là s03f07 idx 1 (Car) có dist_m bằng 3,51 m và khoảng cách 3D r bằng 3,66 m. Hộp xa nhất là s02f00 idx 6 (Car) có dist_m bằng 45,23 m và r bằng 45,25 m.
+Hộp gần nhất là xe con ở s03f07 idx 1 với dist_m bằng 3,51 m và khoảng cách 3D r bằng 3,66 m. Hộp xa nhất là xe con ở s02f00 idx 6 với dist_m bằng 45,23 m và r bằng 45,25 m.
 
-So với bảng 4.3, người đi bộ ở s02f21 idx 6 có kích thước dài 0,750 m, rộng 0,700 m, cao 1,740 m nên cả ba chiều đều nằm gọn trong khoảng chuẩn của người lớn (dài 0,4 đến 0,9 m, rộng 0,5 đến 0,9 m, cao 1,50 đến 1,95 m). Xe con ở s01f04 idx 2 có dài 4,488 m, rộng 2,087 m, cao 1,496 m; chiều dài và chiều cao nằm trong khoảng chuẩn xe con (dài 3,8 đến 5,0 m, cao 1,40 đến 1,60 m), riêng chiều rộng lớn hơn mức 1,90 m khoảng 0,19 m do phải bao trọn cả hai gương chiếu hậu hai bên.
+So với bảng 4.3, người đi bộ ở s02f21 idx 6 có ba chiều nằm gọn trong mức chuẩn; xe con ở s01f04 idx 2 có chiều dài và chiều cao đúng chuẩn, riêng chiều rộng là 2,087 m vượt mức 1,90 m nhẹ do phải bao cả hai gương chiếu hậu.
 
-Xe chạy cùng chiều phía trước ở s03f07 idx 3 có yaw_deg bằng 274,5 độ, gần với mốc 270 độ. Xe chạy ngược chiều ở s01f04 idx 3 có yaw_deg bằng 92,5 độ, gần với mốc 90 độ.
+Xe chạy cùng chiều phía trước ở s03f07 idx 3 có yaw_deg bằng 274,5 độ, gần mốc 270 độ; xe ngược chiều ở s01f04 idx 3 có yaw_deg bằng 92,5 độ, gần mốc 90 độ.
 
 | Cuboid | dist_m (m) | Số điểm |
 |---|---:|---:|
@@ -70,19 +70,16 @@ Xe chạy cùng chiều phía trước ở s03f07 idx 3 có yaw_deg bằng 274,5
 | s01f04, idx 9, Car | 23.29 | 350 |
 | s01f04, idx 12, Car | 37.05 | 35 |
 
-Khi khoảng cách tăng gấp khoảng 3,6 lần (từ 10,26 m lên 37,05 m), số điểm trên xe con giảm từ 1013 điểm xuống còn 35 điểm, tức chỉ còn khoảng 1 phần 29, phù hợp với quy luật suy giảm mật độ theo khoảng cách trên bài giảng (khoảng 1968 điểm ở 0 đến 10 m, 718 ở 10 đến 20 m, 214 ở 20 đến 30 m và 72 ở 30 đến 40 m).
+Khi khoảng cách tăng từ 10,26 m lên 37,05 m, số điểm trên xe con giảm từ 1013 xuống còn 35 điểm, khớp với xu hướng giảm điểm theo khoảng cách trong bài giảng từ 1968 điểm ở 0 đến 10 m xuống 72 điểm ở 30 đến 40 m.
 
-Sau khi xem ảnh đối chiếu và phiếu tự kiểm, đã sửa lại 2 hộp trên CVAT rồi đồng bộ lại: tại s02f00 idx 1 (Bus) dịch tâm x từ 3,443 m về 3,350 m và thu chiều rộng từ 2,800 m về 2,620 m để vẫn bao sát gương phải nhưng bỏ phần thừa ở cạnh trái bị che; tại s02f21 idx 6 (Pedestrian) thu gọn dài và rộng từ 0,900 x 0,900 m về 0,750 x 0,700 m cho ôm sát cụm 144 điểm của người đi bộ. Sau lần đồng bộ cuối, phiếu tự kiểm có 0 trên 97 hộp bị cảnh báo (3 hộp ở xa trên 35 m để trống độ hở mặt đường do xung quanh thưa điểm mặt đường nhưng vẫn khớp ảnh nên giữ nguyên).
+Sau khi xem ảnh đối chiếu và tự kiểm, mình sửa lại 2 hộp trên CVAT rồi đồng bộ lại. Hộp Bus ở s02f00 idx 1 được dời nhẹ tâm và thu hẹp bề ngang cho sát gương phải, bỏ phần trống bên trái. Hộp Pedestrian ở s02f21 idx 6 được thu nhỏ lại cho ôm sát cụm điểm người đi bộ. Sau khi sửa, cả 97 hộp đều không có cảnh báo; 3 hộp ở xa trên 35 m để trống độ hở mặt đường do xung quanh ít điểm đất nhưng khớp ảnh nên mình giữ nguyên.
 
-Đổi kiểm với bạn có mã số [điền MSSV bạn đổi kiểm]: đối chiếu hai giá trị [điền 2 số đã kiểm] trên bảng A, kết quả khớp hoàn toàn.
+Mình đổi kiểm trực tiếp trên màn hình với bạn mã số 2A202603054, kiểm tra 2 giá trị trên bảng A là dist_m của s03f07 idx 1 bằng 3,51 m và yaw_deg của s03f07 idx 3 bằng 274,5 độ, cả hai đều khớp.
 
 ## 6. Ý nghĩa của nhãn, cách dùng AI và điều còn chưa chắc
 
-Nhãn 3D đo bằng mét thay vì điểm ảnh vì mô hình cần học vị trí, khoảng cách và kích thước vật lý không đổi theo góc nhìn để dự đoán quỹ đạo và tránh va chạm chính xác trong không gian thực. Vật thưa điểm phải có quy tắc tối thiểu khoảng 15 đến 20 phần trăm thể tích mới vẽ để tránh đưa các hộp đoán mò sai tâm, sai kích thước vào làm nhiễu dữ liệu huấn luyện.
+Nhãn 3D dùng đơn vị mét thay vì điểm ảnh vì mô hình cần học khoảng cách và kích thước thật ngoài thực tế không đổi theo góc nhìn để dự đoán đường đi và tránh va chạm. Vật thưa điểm phải thấy ít nhất khoảng 15 đến 20 phần trăm thể tích mới vẽ để tránh tạo hộp đoán sai tâm và kích thước làm nhiễu lúc huấn luyện mô hình.
 
-Dùng AI:
-Công cụ: Gemini.
-Câu hỏi chính: Nhờ giải thích hệ tọa độ dữ liệu, cách đọc các quy tắc gán nhãn, bảng 4.3 phân biệt 5 loại đối tượng và ý nghĩa bốn hiện tượng chất lượng trong tài liệu đề bài.
-Cách sử dụng kết quả: Dùng làm tài liệu tra cứu nhanh để tự đọc cảnh, tự kiểm tra hướng đầu xe, bao trọn gương chiếu hậu và đối chiếu số liệu bảng A với phiếu tự kiểm khi viết báo cáo.
+Khi làm bài, mình dùng Gemini để hỏi giải thích hệ tọa độ của dữ liệu, quy ước hướng đầu xe trong tài liệu hướng dẫn, bảng 4.3 phân biệt 5 loại vật thể và ý nghĩa bốn hiện tượng chất lượng rồi tự áp dụng vào lúc gán nhãn và soát lại số liệu.
 
-Điều còn chưa chắc: một số xe đi xa trên 30 m ở s01f04 (idx 11, 12) và s02f00 (idx 5, 6) chỉ nhìn thấy phần đuôi nên cạnh dài và rộng khuất phía trước ước lượng theo kích thước phổ thông trong bảng 4.3, có thể lệch nhẹ so với kích thước từng mẫu xe cụ thể.
+Điều còn chưa chắc là mấy xe ở xa trên 30 m tại s01f04 idx 11, idx 12 và s02f00 idx 5, idx 6 chỉ thấy phần đuôi nên chiều dài phía trước phải ước lượng theo cỡ xe phổ thông trong bảng 4.3.
